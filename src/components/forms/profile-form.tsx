@@ -31,6 +31,18 @@ const ProfileForm = (props: Props) => {
     },
   });
 
+  //   const handleSubmit = async (
+  //     values: z.infer<typeof EditUserProfileSchema>
+  //   ) => {
+  //     setIsLoading(true)
+  //     await onUpdate(values.name)
+  //     setIsLoading(false)
+  //   }
+
+  //   useEffect(() => {
+  //     form.reset({ name: user.name, email: user.email })
+  //   }, [user])
+
   return (
     <Form {...form}>
       <form className="flex flex-col" onSubmit={() => {}}>
@@ -48,6 +60,33 @@ const ProfileForm = (props: Props) => {
             </FormItem>
           )}
         />
+        <FormField
+          disabled={true}
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="Email" type="email" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button
+          type="submit"
+          className="self-start hover:bg-[#2F006B] hover:text-white "
+        >
+          {isLoading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Saving
+            </>
+          ) : (
+            "Save User Settings"
+          )}
+        </Button>
       </form>
     </Form>
   );
