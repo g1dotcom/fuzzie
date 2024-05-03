@@ -26,12 +26,31 @@ const ProfileForm = (props: Props) => {
     mode: "onChange",
     resolver: zodResolver(EditUserProfileSchema),
     defaultValues: {
-      name: user.name,
-      email: user.email,
+      name: "",
+      email: "",
     },
   });
 
-  return <div>ProfileForm</div>;
+  return (
+    <Form {...form}>
+      <form className="flex flex-col" onSubmit={() => {}}>
+        <FormField
+          disabled={isLoading}
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>User full name</FormLabel>
+              <FormControl>
+                <Input placeholder="Name" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </form>
+    </Form>
+  );
 };
 
 export default ProfileForm;
