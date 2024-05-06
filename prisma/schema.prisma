@@ -1,14 +1,25 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// Bu senin Prisma şema dosyan,
+// bu hakkında daha fazla bilgiyi dokümantasyonda bulabilirsin: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// Sorgularını hızlandırmak için veya sunucu fonksiyonlarıyla veya kenar işlevleriyle kolayca ölçeklendirmek için yollar mı arıyorsun?
+// Prisma Accelerate'ı dene: https://pris.ly/cli/accelerate-init
+
+// Prisma tarafından üretilen kodları sağlayan generator belirtilir.
 
 generator client {
   provider = "prisma-client-js"
 }
 
+// Veritabanı bağlantısını belirtiyoruz, burada PostgreSQL kullanıyoruz.
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+// Kullanıcı modelini tanımlıyoruz. Bu model, kullanıcıları temsil edecek ve veritabanında bir tabloya karşılık gelecek.
+
+model User {
+  id      Int    @id @default(autoincrement())
+  clerkId String @unique
 }
