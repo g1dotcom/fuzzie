@@ -26,6 +26,7 @@ const UploadCareButton = ({ onUpload }: Props) => {
       "file-upload-success",
       handleUpload
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
