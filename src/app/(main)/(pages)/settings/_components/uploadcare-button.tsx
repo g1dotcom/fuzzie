@@ -26,12 +26,11 @@ const UploadCareButton = ({ onUpload }: Props) => {
       "file-upload-success",
       handleUpload
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div>
-      <lr-config ctx-name="my-uploader" pubkey="a9428ff5ff90ae7a64eb" />
+      <lr-config ctx-name="my-uploader" pubkey="92fdd51378a4fd4a98c8" />
 
       <lr-file-uploader-regular
         ctx-name="my-uploader"

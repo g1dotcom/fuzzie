@@ -17,7 +17,10 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Loader2 } from "lucide-react";
 
-type Props = {};
+type Props = {
+  user: any;
+  onUpdate?: any;
+};
 
 const ProfileForm = (props: Props) => {
   const [isLoading, setIsLoading] = useState(false);
