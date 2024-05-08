@@ -29,28 +29,32 @@ const ProfileForm = ({ user, onUpdate }: Props) => {
     mode: "onChange",
     resolver: zodResolver(EditUserProfileSchema),
     defaultValues: {
-      name: user.name,
-      email: user.email,
+      name: user?.name,
+      email: user?.email,
     },
   });
 
-  //   const handleSubmit = async (
-  //     values: z.infer<typeof EditUserProfileSchema>
-  //   ) => {
-  //     setIsLoading(true)
-  //     await onUpdate(values.name)
-  //     setIsLoading(false)
-  //   }
+  const handleSubmit = async (
+    values: z.infer<typeof EditUserProfileSchema>
+  ) => {
+    setIsLoading(true);
+    await onUpdate(values.name);
+    setIsLoading(false);
+  };
 
-  //   useEffect(() => {
-  //     form.reset({ name: user.name, email: user.email })
-  //   }, [user])
+  useEffect(() => {
+    form.reset({ name: user?.name, email: user?.email });
+  }, [user]);
 
   return (
     <Form {...form}>
-      <form className="flex flex-col" onSubmit={() => {}}>
+      <form
+        className="flex flex-col"
+        onSubmit={() => {
+          form.handleSubmit(handleSubmit);
+        }}
+      >
         <FormField
-          disabled={isLoading}
           control={form.control}
           name="name"
           render={({ field }) => (
@@ -64,7 +68,6 @@ const ProfileForm = ({ user, onUpdate }: Props) => {
           )}
         />
         <FormField
-          disabled={true}
           control={form.control}
           name="email"
           render={({ field }) => (
