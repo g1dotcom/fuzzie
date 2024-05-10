@@ -55,6 +55,7 @@ const ProfileForm = ({ user, onUpdate }: Props) => {
         }}
       >
         <FormField
+          disabled={isLoading}
           control={form.control}
           name="name"
           render={({ field }) => (
@@ -74,7 +75,12 @@ const ProfileForm = ({ user, onUpdate }: Props) => {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="Email" type="email" {...field} />
+                <Input
+                  placeholder="Email"
+                  type="email"
+                  disabled={true}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
