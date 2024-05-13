@@ -1,3 +1,4 @@
+import { ConnectionsProvider } from "@/providers/connections-provider";
 import EditorProvider from "@/providers/editor-provider";
 import React from "react";
 
@@ -7,7 +8,9 @@ const Page = (props: Props) => {
   return (
     <div className="h-full">
       <EditorProvider>
-        <div className=""></div>
+        <ConnectionsProvider>
+          <></>
+        </ConnectionsProvider>
       </EditorProvider>
     </div>
   );

@@ -89,3 +89,36 @@ const InitialValues: ConnectionProviderProps = {
 
 const ConnectionsContext = createContext(InitialValues);
 const { Provider } = ConnectionsContext;
+
+export const ConnectionsProvider = ({ children }: ConnectionWithChildProps) => {
+  const [discordNode, setDiscordNode] = useState(InitialValues.discordNode);
+  const [googleNode, setGoogleNode] = useState(InitialValues.googleNode);
+  const [notionNode, setNotionNode] = useState(InitialValues.notionNode);
+  const [slackNode, setSlackNode] = useState(InitialValues.slackNode);
+  const [isLoading, setIsLoading] = useState(InitialValues.isLoading);
+  const [workflowTemplate, setWorkFlowTemplate] = useState(
+    InitialValues.workflowTemplate
+  );
+
+  const values = {
+    discordNode,
+    setDiscordNode,
+    googleNode,
+    setGoogleNode,
+    notionNode,
+    setNotionNode,
+    slackNode,
+    setSlackNode,
+    isLoading,
+    setIsLoading,
+    workflowTemplate,
+    setWorkFlowTemplate,
+  };
+
+  return <Provider value={values}>{children}</Provider>;
+};
+
+export const useNodeConnections = () => {
+  const nodeConnection = useContext(ConnectionsContext);
+  return { nodeConnection };
+};
