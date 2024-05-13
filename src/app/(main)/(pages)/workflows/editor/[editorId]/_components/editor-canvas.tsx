@@ -1,6 +1,25 @@
-import { EditorNodeType } from "@/lib/types";
+"use client";
+
+// import { EditorNodeType } from "@/lib/types";
+// import { useEditor } from "@/providers/editor-provider";
+import { EditorCanvasCardType, EditorNodeType } from "@/lib/types";
 import { useEditor } from "@/providers/editor-provider";
-import React, { useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import ReactFlow, {
+  Background,
+  Connection,
+  Controls,
+  Edge,
+  EdgeChange,
+  MiniMap,
+  NodeChange,
+  ReactFlowInstance,
+  applyNodeChanges,
+  applyEdgeChanges,
+  addEdge,
+} from "reactflow";
+
+import "reactflow/dist/style.css";
 
 type Props = {};
 
