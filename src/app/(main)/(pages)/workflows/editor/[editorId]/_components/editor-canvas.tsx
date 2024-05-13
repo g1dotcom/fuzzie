@@ -20,6 +20,7 @@ import ReactFlow, {
 } from "reactflow";
 
 import "reactflow/dist/style.css";
+import EditorCanvasCardSingle from "./editor-canvas-card-single";
 
 type Props = {};
 
