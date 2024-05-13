@@ -1,3 +1,5 @@
+"use client";
+
 // Temel React ve kullanılan custom hook'ları içe aktarma
 import {
   Dispatch,
