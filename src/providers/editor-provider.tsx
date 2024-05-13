@@ -1,6 +1,4 @@
-"use client";
-
-import { EditorActions, EditorNodeType } from "@/lib/types";
+// Temel React ve kullanılan custom hook'ları içe aktarma
 import {
   Dispatch,
   createContext,
@@ -8,29 +6,35 @@ import {
   useEffect,
   useReducer,
 } from "react";
+import { EditorActions, EditorNodeType } from "@/lib/types"; // Aksiyon tipleri ve düğüm yapıları için tanımlar
 
+// Düzenleyici düğüm yapısının tanımı
 export type EditorNode = EditorNodeType;
 
+// Editörün genel durum yapısını tanımlayan türler
 export type Editor = {
-  elements: EditorNode[];
+  elements: EditorNode[]; // Düğümler (elementler)
   edges: {
-    id: string;
-    source: string;
-    target: string;
+    id: string; // Kenarların benzersiz kimlikleri
+    source: string; // Başlangıç düğüm kimliği
+    target: string; // Hedef düğüm kimliği
   }[];
-  selectedNode: EditorNodeType;
+  selectedNode: EditorNodeType; // Şu anda seçili olan düğüm
 };
 
+// Geçmiş işlemlerinin durum yapısını tanımlayan tür
 export type HistoryState = {
-  history: Editor[];
-  currentIndex: number;
+  history: Editor[]; // Geçmişteki editör durumlarının listesi
+  currentIndex: number; // Geçerli indeks
 };
 
+// Editör ve geçmişin kapsamlı durum yapısını tanımlayan tür
 export type EditorState = {
   editor: Editor;
   history: HistoryState;
 };
 
+// Başlangıç editör ve geçmiş durumları
 const initialEditorState: EditorState["editor"] = {
   elements: [],
   selectedNode: {
@@ -54,48 +58,43 @@ const initialHistoryState: HistoryState = {
   currentIndex: 0,
 };
 
+// Toplam başlangıç durumu
 const initialState: EditorState = {
   editor: initialEditorState,
   history: initialHistoryState,
 };
 
+// Editör için reducer fonksiyonu; aksiyonlara göre durum güncellemesi yapar
 const editorReducer = (
   state: EditorState = initialState,
   action: EditorActions
 ): EditorState => {
   switch (action.type) {
+    // Yeniden yapma işlemi
     case "REDO":
       if (state.history.currentIndex < state.history.history.length - 1) {
         const nextIndex = state.history.currentIndex + 1;
-        const nextEditorState = { ...state.history.history[nextIndex] };
-        const redoState = {
+        return {
           ...state,
-          editor: nextEditorState,
-          history: {
-            ...state.history,
-            currentIndex: nextIndex,
-          },
+          editor: { ...state.history.history[nextIndex] },
+          history: { ...state.history, currentIndex: nextIndex },
         };
-        return redoState;
       }
       return state;
 
+    // Geri alma işlemi
     case "UNDO":
       if (state.history.currentIndex > 0) {
         const prevIndex = state.history.currentIndex - 1;
-        const prevEditorState = { ...state.history.history[prevIndex] };
-        const undoState = {
+        return {
           ...state,
-          editor: prevEditorState,
-          history: {
-            ...state.history,
-            currentIndex: prevIndex,
-          },
+          editor: { ...state.history.history[prevIndex] },
+          history: { ...state.history, currentIndex: prevIndex },
         };
-        return undoState;
       }
       return state;
 
+    // Veri yükleme işlemi
     case "LOAD_DATA":
       return {
         ...state,
@@ -105,6 +104,8 @@ const editorReducer = (
           edges: action.payload.edges,
         },
       };
+
+    // Seçili elementi güncelleme işlemi
     case "SELECTED_ELEMENT":
       return {
         ...state,
@@ -113,16 +114,13 @@ const editorReducer = (
           selectedNode: action.payload.element,
         },
       };
+
     default:
       return state;
   }
 };
 
-export type EditorContextData = {
-  previewMode: boolean;
-  setPreviewMode: (previewMode: boolean) => void;
-};
-
+// Editör context'inin tanımı
 export const EditorContext = createContext<{
   state: EditorState;
   dispatch: Dispatch<EditorActions>;
@@ -130,6 +128,8 @@ export const EditorContext = createContext<{
   state: initialState,
   dispatch: () => undefined,
 });
+
+// Editör sağlayıcısı; tüm çocuk bileşenlerine durum ve dispatch
 
 type EditorProps = {
   children: React.ReactNode;
