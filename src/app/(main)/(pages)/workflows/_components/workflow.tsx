@@ -8,6 +8,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 // import { Switch } from '@/components/ui/switch'
 // import { toast } from 'sonner'
 // import { onFlowPublish } from '../_actions/workflow-connections'
@@ -61,19 +62,17 @@ const Workflow = ({ description, id, name, publish }: Props) => {
           </div>
         </Link>
       </CardHeader>
-      {/* <div className="flex flex-col items-center gap-2 p-4">
-        <Label
-          htmlFor="airplane-mode"
-          className="text-muted-foreground"
-        >
-          {publish! ? 'On' : 'Off'}
+      <div className="flex flex-col items-center gap-2 p-4">
+        <Label htmlFor="airplane-mode" className="text-muted-foreground">
+          {/* {publish! ? "On" : "Off"} */}
         </Label>
         <Switch
           id="airplane-mode"
           // onClick={onPublishFlow}
           defaultChecked={publish!}
-        />
-      </div> */}
+        />{" "}
+        *
+      </div>
     </Card>
   );
 };
