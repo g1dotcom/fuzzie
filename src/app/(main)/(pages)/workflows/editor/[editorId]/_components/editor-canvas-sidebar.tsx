@@ -13,11 +13,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  fetchBotSlackChannels,
-  onConnections,
-  onDragStart,
-} from "@/lib/editor-utils";
+// import {
+//   fetchBotSlackChannels,
+//   onConnections,
+//   onDragStart,
+// } from "@/lib/editor-utils";
 import EditorCanvasIconHelper from "./editor-canvas-card-icon-hepler";
 import {
   Accordion,
@@ -25,9 +25,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import RenderConnectionAccordion from "./render-connection-accordion";
-import RenderOutputAccordion from "./render-output-accordian";
-import { useFuzzieStore } from "@/store";
+// import RenderConnectionAccordion from "./render-connection-accordion";
+// import RenderOutputAccordion from "./render-output-accordian";
+// import { useFuzzieStore } from "@/store";
 
 type Props = {
   nodes: EditorNodeType[];
@@ -36,21 +36,21 @@ type Props = {
 const EditorCanvasSidebar = ({ nodes }: Props) => {
   const { state } = useEditor();
   const { nodeConnection } = useNodeConnections();
-  const { googleFile, setSlackChannels } = useFuzzieStore();
-  useEffect(() => {
-    if (state) {
-      onConnections(nodeConnection, state, googleFile);
-    }
-  }, [state]);
+  //   const { googleFile, setSlackChannels } = useFuzzieStore();
+  //   useEffect(() => {
+  //     if (state) {
+  //       onConnections(nodeConnection, state, googleFile);
+  //     }
+  //   }, [state]);
 
-  useEffect(() => {
-    if (nodeConnection.slackNode.slackAccessToken) {
-      fetchBotSlackChannels(
-        nodeConnection.slackNode.slackAccessToken,
-        setSlackChannels
-      );
-    }
-  }, [nodeConnection]);
+  //   useEffect(() => {
+  //     if (nodeConnection.slackNode.slackAccessToken) {
+  //       fetchBotSlackChannels(
+  //         nodeConnection.slackNode.slackAccessToken,
+  //         setSlackChannels
+  //       );
+  //     }
+  //   }, [nodeConnection]);
 
   return (
     <aside>
@@ -72,9 +72,9 @@ const EditorCanvasSidebar = ({ nodes }: Props) => {
                 key={cardKey}
                 draggable
                 className="w-full cursor-grab border-black bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-900"
-                onDragStart={(event) =>
-                  onDragStart(event, cardKey as EditorCanvasTypes)
-                }
+                // onDragStart={(event) =>
+                //   onDragStart(event, cardKey as EditorCanvasTypes)
+                // }
               >
                 <CardHeader className="flex flex-row items-center gap-4 p-4">
                   <EditorCanvasIconHelper type={cardKey as EditorCanvasTypes} />
@@ -97,23 +97,23 @@ const EditorCanvasSidebar = ({ nodes }: Props) => {
                 Account
               </AccordionTrigger>
               <AccordionContent>
-                {CONNECTIONS.map((connection) => (
+                {/* {CONNECTIONS.map((connection) => (
                   <RenderConnectionAccordion
                     key={connection.title}
                     state={state}
                     connection={connection}
                   />
-                ))}
+                ))} */}
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="Expected Output" className="px-2">
               <AccordionTrigger className="!no-underline">
                 Action
               </AccordionTrigger>
-              <RenderOutputAccordion
+              {/* <RenderOutputAccordion
                 state={state}
                 nodeConnection={nodeConnection}
-              />
+              /> */}
             </AccordionItem>
           </Accordion>
         </TabsContent>
