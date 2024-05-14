@@ -114,6 +114,8 @@ const EditorCanvas = (props: Props) => {
           type: type,
         },
       };
+
+      console.log("setting");
       //@ts-ignore
       setNodes((nds) => nds.concat(newNode));
     },
