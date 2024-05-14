@@ -26,6 +26,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { onDragStart } from "@/lib/editor-utils";
+import RenderConnectionAccordion from "./render-connection-accordion";
 // import RenderConnectionAccordion from "./render-connection-accordion";
 // import RenderOutputAccordion from "./render-output-accordian";
 // import { useFuzzieStore } from "@/store";
