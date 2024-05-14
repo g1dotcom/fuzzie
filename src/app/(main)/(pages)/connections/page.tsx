@@ -3,6 +3,7 @@ import React from "react";
 import ConnectionCard from "./_components/connection-card";
 import { currentUser } from "@clerk/nextjs";
 import { onDiscordConnect } from "./_actions/discord-connection";
+import { onNotionConnect } from "./_actions/notion-connecttion";
 
 type Props = {
   searchParams?: { [key: string]: string | undefined };
