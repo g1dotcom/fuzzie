@@ -4,6 +4,7 @@ import ConnectionCard from "./_components/connection-card";
 import { currentUser } from "@clerk/nextjs";
 import { onDiscordConnect } from "./_actions/discord-connection";
 import { onNotionConnect } from "./_actions/notion-connecttion";
+import { onSlackConnect } from "./_actions/slack-connection";
 
 type Props = {
   searchParams?: { [key: string]: string | undefined };
