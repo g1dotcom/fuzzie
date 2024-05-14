@@ -145,6 +145,7 @@ const EditorCanvas = (props: Props) => {
 
   useEffect(() => {
     dispatch({ type: "LOAD_DATA", payload: { edges, elements: nodes } });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodes, edges]);
 
   const nodeTypes = useMemo(
@@ -178,6 +179,7 @@ const EditorCanvas = (props: Props) => {
 
   useEffect(() => {
     onGetWorkFlow();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
