@@ -25,6 +25,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { onDragStart } from "@/lib/editor-utils";
 // import RenderConnectionAccordion from "./render-connection-accordion";
 // import RenderOutputAccordion from "./render-output-accordian";
 // import { useFuzzieStore } from "@/store";
@@ -72,9 +73,9 @@ const EditorCanvasSidebar = ({ nodes }: Props) => {
                 key={cardKey}
                 draggable
                 className="w-full cursor-grab border-black bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-900"
-                // onDragStart={(event) =>
-                //   onDragStart(event, cardKey as EditorCanvasTypes)
-                // }
+                onDragStart={(event) =>
+                  onDragStart(event, cardKey as EditorCanvasTypes)
+                }
               >
                 <CardHeader className="flex flex-row items-center gap-4 p-4">
                   <EditorCanvasIconHelper type={cardKey as EditorCanvasTypes} />

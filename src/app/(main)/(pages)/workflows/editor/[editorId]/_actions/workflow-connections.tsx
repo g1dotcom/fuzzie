@@ -36,3 +36,16 @@ export const onFlowPublish = async (workflowId: string, state: boolean) => {
   if (published.publish) return "Workflow published";
   return "Workflow unpublished";
 };
+
+export const onGetNodesEdges = async (flowId: string) => {
+  const nodesEdges = await db.workflows.findUnique({
+    where: {
+      id: flowId,
+    },
+    select: {
+      nodes: true,
+      edges: true,
+    },
+  });
+  if (nodesEdges?.nodes && nodesEdges?.edges) return nodesEdges;
+};
