@@ -3,6 +3,7 @@ import { EditorCanvasCardType } from './types'
 import { EditorState } from '@/providers/editor-provider'
 import { getDiscordConnectionUrl } from '@/app/(main)/(pages)/connections/_actions/discord-connection'
 import { getNotionConnection, getNotionDatabase } from '@/app/(main)/(pages)/connections/_actions/notion-connecttion'
+import { getSlackConnection } from '@/app/(main)/(pages)/connections/_actions/slack-connection'
 // import {
 //   getNotionConnection,
 //   getNotionDatabase,
