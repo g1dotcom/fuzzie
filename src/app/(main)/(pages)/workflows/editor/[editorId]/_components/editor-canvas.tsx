@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/resizable";
 import { toast } from "sonner";
 import { usePathname } from "next/navigation";
+//@ts-ignore
 import { v4 } from "uuid";
 import { EditorCanvasDefaultCardTypes } from "@/lib/constant";
 import FlowInstance from "./flow-instance";

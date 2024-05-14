@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/accordion";
 import { onDragStart } from "@/lib/editor-utils";
 import RenderConnectionAccordion from "./render-connection-accordion";
+import RenderOutputAccordion from "./render-output-accordion";
 // import RenderConnectionAccordion from "./render-connection-accordion";
 // import RenderOutputAccordion from "./render-output-accordian";
 // import { useFuzzieStore } from "@/store";
@@ -112,10 +113,10 @@ const EditorCanvasSidebar = ({ nodes }: Props) => {
               <AccordionTrigger className="!no-underline">
                 Action
               </AccordionTrigger>
-              {/* <RenderOutputAccordion
+              <RenderOutputAccordion
                 state={state}
                 nodeConnection={nodeConnection}
-              /> */}
+              />
             </AccordionItem>
           </Accordion>
         </TabsContent>
