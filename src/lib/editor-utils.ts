@@ -3,7 +3,8 @@ import { EditorCanvasCardType } from './types'
 import { EditorState } from '@/providers/editor-provider'
 import { getDiscordConnectionUrl } from '@/app/(main)/(pages)/connections/_actions/discord-connection'
 import { getNotionConnection, getNotionDatabase } from '@/app/(main)/(pages)/connections/_actions/notion-connecttion'
-import { getSlackConnection } from '@/app/(main)/(pages)/connections/_actions/slack-connection'
+import { getSlackConnection, listBotChannels } from '@/app/(main)/(pages)/connections/_actions/slack-connection'
+import { Option } from '@/components/ui/multiple-selector'
 // import {
 //   getNotionConnection,
 //   getNotionDatabase,
@@ -139,5 +140,12 @@ export const onConnections = async (
       })
     }
   }
+}
+
+export const fetchBotSlackChannels = async (
+  token: string,
+  setSlackChannels: (slackChannels: Option[]) => void
+) => {
+  await listBotChannels(token)?.then((channels) => setSlackChannels(channels))
 }
 
