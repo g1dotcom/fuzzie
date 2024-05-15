@@ -9,11 +9,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { onFlowPublish } from "../editor/[editorId]/_actions/workflow-connections";
 import { toast } from "sonner";
 // import { Switch } from '@/components/ui/switch'
 // import { toast } from 'sonner'
-// import { onFlowPublish } from '../_actions/workflow-connections'
+import { onFlowPublish } from "../_actions/workflow-connections";
 
 type Props = {
   name: string;
