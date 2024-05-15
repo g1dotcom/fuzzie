@@ -65,12 +65,12 @@ const Workflow = ({ description, id, name, publish }: Props) => {
       </CardHeader>
       <div className="flex flex-col items-center gap-2 p-4">
         <Label htmlFor="airplane-mode" className="text-muted-foreground">
-          {/* {publish! ? "On" : "Off"} */} On
+          {publish! ? "On" : "Off"}
         </Label>
         <Switch
           id="airplane-mode"
-          // onClick={onPublishFlow}
-          //   defaultChecked={publish!}
+          onClick={onPublishFlow}
+          defaultChecked={publish!}
         />{" "}
         *
       </div>
