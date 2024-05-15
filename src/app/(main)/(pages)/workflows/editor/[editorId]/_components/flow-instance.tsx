@@ -29,11 +29,13 @@ const FlowInstance = ({ children, edges, nodes }: Props) => {
     );
 
     if (flow) toast.message(flow.message);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodeConnection]);
 
   const onPublishWorkflow = useCallback(async () => {
     const response = await onFlowPublish(pathname.split("/").pop()!, true);
     if (response) toast.message(response);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onAutomateFlow = async () => {
@@ -52,6 +54,7 @@ const FlowInstance = ({ children, edges, nodes }: Props) => {
 
   useEffect(() => {
     onAutomateFlow();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [edges]);
 
   return (

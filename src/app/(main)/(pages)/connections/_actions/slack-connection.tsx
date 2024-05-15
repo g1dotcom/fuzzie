@@ -106,7 +106,6 @@ const postMessageInSlackChannel = async (
   }
 };
 
-// Wrapper function to post messages to multiple Slack channels
 export const postMessageToSlack = async (
   slackAccessToken: string,
   selectedSlackChannels: Option[],
