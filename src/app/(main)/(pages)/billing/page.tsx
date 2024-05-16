@@ -2,7 +2,7 @@ import React from "react";
 import Stripe from "stripe";
 import { currentUser } from "@clerk/nextjs";
 import { db } from "@/lib/db";
-import BillingDashboard from "./_components/billing-dashboard";
+import BillingDashboard from "./_components/billing-dashboard.tsx";
 
 type Props = {
   searchParams?: { [key: string]: string | undefined };
