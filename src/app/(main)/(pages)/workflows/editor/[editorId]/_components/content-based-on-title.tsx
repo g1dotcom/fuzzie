@@ -15,7 +15,6 @@ import { onContentChange } from "@/lib/editor-utils";
 import GoogleFileDetails from "./google-file-details";
 import GoogleDriveFiles from "./google-drive-files";
 import ActionButton from "./action-button";
-import { getFileMetaData } from "@/app/(main)/(pages)/connections/_actions/google-connection";
 import axios from "axios";
 import { toast } from "sonner";
 
