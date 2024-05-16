@@ -2,17 +2,13 @@ import { ConnectionProviderProps } from '@/providers/connections-provider'
 import { EditorCanvasCardType } from './types'
 import { EditorState } from '@/providers/editor-provider'
 import { getDiscordConnectionUrl } from '@/app/(main)/(pages)/connections/_actions/discord-connection'
-import { getNotionConnection, getNotionDatabase } from '@/app/(main)/(pages)/connections/_actions/notion-connecttion'
-import { getSlackConnection, listBotChannels } from '@/app/(main)/(pages)/connections/_actions/slack-connection'
+
+import {
+  getSlackConnection,
+  listBotChannels,
+} from '@/app/(main)/(pages)/connections/_actions/slack-connection'
 import { Option } from '@/components/ui/multiple-selector'
-// import {
-//   getNotionConnection,
-//   getNotionDatabase,
-// } from '@/app/(main)/(pages)/connections/_actions/notion-connection'
-// import {
-//   getSlackConnection,
-// } from '@/app/(main)/(pages)/connections/_actions/slack-connection'
-// import { Option } from '@/components/ui/multiple-selector'
+import { getNotionConnection, getNotionDatabase } from '@/app/(main)/(pages)/connections/_actions/notion-connecttion'
 
 export const onDragStart = (
   event: any,
@@ -51,7 +47,9 @@ export const onContentChange = (
     onSlackContent(nodeConnection, event)
   } else if (nodeType === 'Discord') {
     onDiscordContent(nodeConnection, event)
-  } 
+  } else if (nodeType === 'Notion') {
+    onNotionContent(nodeConnection, event)
+  }
 }
 
 export const onAddTemplateSlack = (
@@ -117,7 +115,7 @@ export const onConnections = async (
       })
 
       if (nodeConnection.notionNode.databaseId !== '') {
-        const response = await getNotionDatabase (
+        const response = await getNotionDatabase(
           nodeConnection.notionNode.databaseId,
           nodeConnection.notionNode.accessToken
         )
@@ -149,3 +147,12 @@ export const fetchBotSlackChannels = async (
   await listBotChannels(token)?.then((channels) => setSlackChannels(channels))
 }
 
+export const onNotionContent = (
+  nodeConnection: ConnectionProviderProps,
+  event: React.ChangeEvent<HTMLInputElement>
+) => {
+  nodeConnection.setNotionNode((prev: any) => ({
+    ...prev,
+    content: event.target.value,
+  }))
+}
